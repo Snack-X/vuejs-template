@@ -1,0 +1,18 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env", {
+        "targets": {
+          "browsers": [
+            "> 0.25%",
+            "not ie <= 10"
+          ]
+        }
+      },
+      "@babel/preset-stage-3"
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-transform-runtime"
+  ]
+}

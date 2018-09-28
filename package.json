@@ -1,0 +1,45 @@
+{
+  "name": "vuejs-template",
+  "version": "0.0.0",
+  "description": "Vue.js Template",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "dev": "webpack-dev-server --progress --config config/webpack.dev.js",
+    "prebuild": "rimraf dist",
+    "build": "webpack --config config/webpack.prod.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-stage-3": "^7.0.0",
+    "@babel/runtime": "^7.0.0",
+    "babel-loader": "^8.0.2",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "css-loader": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.4.3",
+    "node-sass": "^4.9.3",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.0",
+    "url-loader": "^1.1.1",
+    "vue": "^2.5.17",
+    "vue-loader": "^15.4.2",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-merge": "^4.1.4"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.1.9"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.5.0",
+    "yarn": "\u001b[1m\u001b[31mDON'T USE YARN - Use npm instead\u001b[0m"
+  }
+}
