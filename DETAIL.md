@@ -1,3 +1,5 @@
+# Explanation of structure
+
 ## `package.json`
 
 ### Dependencies
@@ -54,6 +56,4 @@
 
 ## Webpack config files
 
-[`config/webpack.base.js`](/config/webpack.base.js)
-[`config/webpack.dev.js`](/config/webpack.dev.js)
-[`config/webpack.prod.js`](/config/webpack.prod.js)
+Read [`config/webpack.base.js`](/config/webpack.base.js), [`config/webpack.dev.js`](/config/webpack.dev.js), and [`config/webpack.prod.js`](/config/webpack.prod.js).
