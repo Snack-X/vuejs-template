@@ -8,6 +8,8 @@ This template uses:
 * Babel (v7.x)
 * Vue.js (v2.x)
   * vue-router
+* ESLint
+  * [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript)
 
 ## Explanation
 
@@ -15,7 +17,6 @@ Read [DETAIL.md](DETAIL.md)
 
 ## TODO
 
-* Lint
 * SSR
 
 ## References
