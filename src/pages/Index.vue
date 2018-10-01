@@ -22,12 +22,12 @@
 <script>
 export default {
   name: 'Index',
-  data () {
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
-}
+      msg: 'Welcome to Your Vue.js App',
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
