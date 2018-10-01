@@ -2,9 +2,10 @@
 process.env.NODE_ENV = 'development';
 
 const merge = require('webpack-merge');
-const base = require('./webpack.base.js');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const base = require('./webpack.base.js');
 
 // merge base config with development only config
 module.exports = merge(base, {

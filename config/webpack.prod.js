@@ -2,12 +2,15 @@
 process.env.NODE_ENV = 'production';
 
 const merge = require('webpack-merge');
-const base = require('./webpack.base.js');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const MinifyPlugin = require('babel-minify-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const PrerenderSPAPlugin = require('prerender-spa-plugin');
+
+const base = require('./webpack.base.js');
+const consts = require('./consts');
 
 // merge base config with production only config
 module.exports = merge(base, {
@@ -40,5 +43,11 @@ module.exports = merge(base, {
     }),
     // compress JS output
     new MinifyPlugin(),
+    new PrerenderSPAPlugin({
+      staticDir: consts.dirDestination,
+      routes: [
+        '/',
+      ],
+    }),
   ],
 });

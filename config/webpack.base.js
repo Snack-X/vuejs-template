@@ -1,7 +1,6 @@
 // check NODE_ENV environment variable to check current mode
 // this is injected from webpack.dev.js or webpack.prod.js
 const isDev = process.env.NODE_ENV === 'development';
-const path = require('path');
 
 // styles don't need to be extracted on development mode
 // so conditionally use style-loader or mini-css-extract-plugin's loader
@@ -9,20 +8,18 @@ const styleLoader = isDev ? 'style-loader' : require('mini-css-extract-plugin').
 // passes all loaders defined by webpack config to vue-loader
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-// resolves directory relative to root directory
-function resolve(dir = '') {
-  return path.join(__dirname, '..', dir);
-}
+// shared constants
+const consts = require('./consts');
 
 module.exports = {
-  context: resolve(),
+  context: consts.dirRoot,
   entry: {
     // define `app` entry, multiple entries can be defined
     app: './src/main.js',
   },
   output: {
     // output all files to dist directory
-    path: resolve('dist/'),
+    path: consts.dirDestination,
     // but path are relative to / in HTML
     publicPath: '/',
     // filenames are appended with its hash
@@ -34,9 +31,9 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       // vue components are resolved as vue bundle script
-      'vue$': 'vue/dist/vue.esm.js',
+      vue$: 'vue/dist/vue.esm.js',
       // @ acts as a magic directory which resolves to the src directory
-      '@': resolve('src'),
+      '@': consts.dirSource,
     },
   },
   module: {
@@ -45,7 +42,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [ 'babel-loader' ],
+        use: ['babel-loader'],
       },
       // all vue single file components are handled by vue loader
       {
@@ -55,7 +52,7 @@ module.exports = {
           // elements below are transformed as require / import for these attributes
           // it will be handled by url loader later
           transformToRequire: {
-            video: [ 'src', 'poster' ],
+            video: ['src', 'poster'],
             source: 'src',
             img: 'src',
             image: 'xlink:href',
@@ -65,12 +62,12 @@ module.exports = {
       // css files are handled by style loader and css loader
       {
         test: /\.css$/,
-        use: [ styleLoader, 'css-loader' ],
+        use: [styleLoader, 'css-loader'],
       },
       // especially, sass/scss files are additionally handled by sass loader
       {
         test: /\.s[ac]ss$/,
-        use: [ styleLoader, 'css-loader', 'sass-loader' ],
+        use: [styleLoader, 'css-loader', 'sass-loader'],
       },
       // if these file types are imported:
       //   if size is bigger than limit bytes, separate file will be generated
@@ -79,7 +76,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 8192,
+          limit: 5120,
           name: 'assets/images/[name].[hash:7].[ext]',
         },
       },
